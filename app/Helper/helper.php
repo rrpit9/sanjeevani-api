@@ -125,8 +125,9 @@
 
     if (! function_exists('dateCheck'))
     {
-        function dateCheck($date = "", $format = 'Y-m-d h:i A')
+        function dateCheck($date = "", $timeToShow = false, $format = 'd M, Y')
         {
+            if($timeToShow){$format.=' h:i A';}
             return ($date ? date($format, strtotime($date)) : null);
         }
     }

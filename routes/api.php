@@ -1,4 +1,5 @@
 <?php
+namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login',[AuthenticationController::class,'login'])->name('api.login');
+
+Route::group(['middleware'=> ['auth:api','verified:api'],'as'=>'api.'],function(){
+    // Authenticated API Routes will appear here
+    Route::get('user/profile',[AuthenticationController::class,'getUserProfile'])->name('user.info');
+
+    // Logout API
+    Route::any('/logout',[AuthenticationController::class,'logoutFromSingleDevice'])->name('logout');
+    Route::any('/logout_from_all',[AuthenticationController::class,'logoutFromAllDevice'])->name('logout_all');
 });

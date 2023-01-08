@@ -17,4 +17,8 @@ return [
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
+    'blocked' => 'this account is temporarily blocked.',
+    'inactive' => 'this account is temporarily inactive.',
+    'login_not_allowed' => 'Login not allowed at this time',
+
 ];

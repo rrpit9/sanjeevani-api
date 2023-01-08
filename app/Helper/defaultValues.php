@@ -15,3 +15,13 @@
             return ['Married','UnMarried','Divorced'];
         }
     }
+
+    if (! function_exists('device_type'))
+    {
+        function device_type()
+        {
+            return ['ios','android','web'];
+        }
+    }
+
+

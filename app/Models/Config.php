@@ -15,7 +15,9 @@ class Config extends Model
     const MASTER_PASSWORD = 'MASTER_PASSWORD';
     const REFERRER_BONUS = 'REFERRER_BONUS';
 
-    public function getMasterPassword()
+    protected $guarded = [];
+
+    public static function getMasterPassword()
     {
         $config = Config::firstOrCreate(['config_key' => Config::MASTER_PASSWORD],
             [
@@ -26,7 +28,7 @@ class Config extends Model
         return $config;
     }
 
-    public function getReferrerBonusPoint()
+    public static function getReferrerBonusPoint()
     {
         $config = Config::firstOrCreate(['config_key' => Config::REFERRER_BONUS],
             [
@@ -36,6 +38,4 @@ class Config extends Model
         );
         return $config;
     }
-
-    protected $guarded = [];
 }
