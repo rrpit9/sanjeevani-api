@@ -91,7 +91,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
 
-        Schema::create('category', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->boolean('active')->default(true);
@@ -124,7 +124,7 @@ class CreateUsersTable extends Migration
             $table->string('image');
             $table->string('name');
             $table->decimal('price',8,2)->nullable()->comment('Product Price Per Unit');
-            $table->decimal('discount',2,2)->nullable()->comment('Discounted Percentage');
+            $table->decimal('discount',4,2)->nullable()->comment('Discounted Percentage');
             $table->longText('description')->nullable()->comment('Discription about Product');
             $table->date('expiry')->nullable();
             $table->softDeletes();
