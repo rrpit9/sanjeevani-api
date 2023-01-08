@@ -13,3 +13,9 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/public/upload/*
+/public/uploads/*
+*.zip
+__MACOSX
+.DS_Store
+.rnd
