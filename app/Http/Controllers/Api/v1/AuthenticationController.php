@@ -37,7 +37,10 @@ class AuthenticationController extends Controller
                     auth()->login($user);
                     $user->accessToken = $this->getAccessToken($user);
                     $this->updateDeviceTypeandToken($user, $req);
-                    return successResponse('Login Success',$user->accessToken);
+                    
+                    return successResponse(
+                        'Login Success',$user->accessToken
+                    );
                 }
                 throw new CustomException(['password' => __('auth.password')]);
             }
@@ -49,7 +52,10 @@ class AuthenticationController extends Controller
     public function getUserProfile(Request $req)
     {
         $user = $req->user();
-        return successResponse('User Profile',new UserInfoResource($user));
+        
+        return successResponse(
+            'User Profile',new UserInfoResource($user)
+        );
     }
 
     // Logout Fron Passport for Single Device

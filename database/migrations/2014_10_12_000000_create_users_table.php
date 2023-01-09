@@ -127,6 +127,7 @@ class CreateUsersTable extends Migration
             $table->decimal('discount',4,2)->nullable()->comment('Discounted Percentage');
             $table->longText('description')->nullable()->comment('Discription about Product');
             $table->date('expiry')->nullable();
+            $table->boolean('active')->default(true);
             $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));

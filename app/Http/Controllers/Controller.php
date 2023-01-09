@@ -13,6 +13,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function authUser()
+    {
+        return auth()->user();
+    }
+    
     // Access Token for LoggedIn User Passport
     public function getAccessToken($user)
     {

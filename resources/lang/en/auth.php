@@ -20,5 +20,6 @@ return [
     'blocked' => 'this account is temporarily blocked.',
     'inactive' => 'this account is temporarily inactive.',
     'login_not_allowed' => 'Login not allowed at this time',
+    'middleware_unauthenticated' => 'You are not Authorised to make this Request'
 
 ];
