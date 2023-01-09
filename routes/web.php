@@ -1,6 +1,10 @@
 <?php
 
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('welcome');
+
+Auth::routes(['login' => true, 'register' => false, 'verify' => true, 'logout' => false]);
+
+Route::group(['middleware' => ['auth','verified']], function () {
+    // Authenticate & Verified Routes Will be Here
+    Route::get('/home', [HomeController::class, 'home'])->name('home');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::any('logout', [LoginController::class, 'logout'])->name('logout');

@@ -18,7 +18,7 @@ class AuthenticationController extends Controller
     {
         $emailOrMobile = $req->email_mobile;
         $password = $req->password;
-        $user = User::whereRaw('FIND_IN_SET('.$req->login_type.', user_role)')->where(function ($q) use ($emailOrMobile){
+        $user = User::where(function ($q) use ($emailOrMobile){
             $q->where('email', $emailOrMobile)->orWhere('mobile', $emailOrMobile);
         })->first();
         $userAuthenticated = false;
@@ -37,7 +37,7 @@ class AuthenticationController extends Controller
                     auth()->login($user);
                     $user->accessToken = $this->getAccessToken($user);
                     $this->updateDeviceTypeandToken($user, $req);
-                    return successResponse('Login Success',new UserInfoResource($user));
+                    return successResponse('Login Success',$user->accessToken);
                 }
                 throw new CustomException(['password' => __('auth.password')]);
             }

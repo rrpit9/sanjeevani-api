@@ -26,10 +26,9 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'login_type' => 'required|numeric|min:1',
             'email_mobile' => 'required|string',
             'password' => 'required|string',
-            'device_type' => 'required|in:'.implode(',',device_type()),
+            'device_type' => 'nullable|in:'.implode(',',device_type()),
             'device_token' => 'nullable|string'
         ];
     }
