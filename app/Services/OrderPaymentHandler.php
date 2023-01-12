@@ -9,8 +9,7 @@ use App\Models\MasterOrder;
 use App\Models\MasterPayment;
 use App\Services\Handler\CartHandler;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\Constants\MasterOrderAndCartStatus;
-use App\Services\Constants\MasterPaymentStatus;
+use App\Services\Constants\OrderPaymentStatus;
 
 class OrderPaymentHandler
 {

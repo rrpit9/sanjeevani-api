@@ -10,6 +10,13 @@ class Cart extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = [];
+
+    public function itemable()
+    {
+        return $this->morphTo('itemable', 'itemable_type', 'itemable_id')->latest('id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id','id');

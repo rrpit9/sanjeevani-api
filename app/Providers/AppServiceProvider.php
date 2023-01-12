@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
     public function registerMorphMaps()
     {
         Relation::morphMap([
-            // 'Product' => \App\Models\Product::class,
+            'Product' => \App\Models\Product::class,
             // 'MasterOrder' => \App\Models\MasterOrder::class
         ]);
     }

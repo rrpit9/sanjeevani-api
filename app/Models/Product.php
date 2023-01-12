@@ -10,6 +10,9 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const ACTIVE = true;
+    const INACTIVE = false;
+
     protected $guarded = [];
 
     public function client_info()
