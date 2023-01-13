@@ -34,6 +34,8 @@ class CreateCartsTable extends Migration
         Schema::create('master_orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('client_id')->nullable()->comment('Referance of Clients')->index();
+            $table->unsignedBigInteger('business_id')->nullable()->comment('Referance of Business')->index();
             $table->unsignedTinyInteger('status')->default(0)->index()->comment('INITIATED:0, PAYMENT_FAILED:1, PAYMENT_COMPLETE:2, FULFILLED:3, REFUND_INITIATED:4, PAYMENT_REFUNDED:5');
             $table->decimal('total_amount', 8,2)->default(0)->comment('Total Amount Payable for this Order');
             $table->decimal('by_wallet',8,2)->default(0)->comment('Amount Paid By Wallet');
